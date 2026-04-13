@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culinary</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #fff7f8, #f8fbff);
+            color: #111;
+        }
+
+    
+        nav {
+            width: 100%;
+            height: 95px;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-bottom: 1px solid #dcdcdc;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-left,
+        .nav-right {
+            width: 190px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            justify-content: flex-start;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-left img,
+        .nav-right img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 45px;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            color: #6b6b6b;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-center ul li a:hover {
+            color: black;
+        }
+
+        
+        .hero {
+            min-height: 55vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 30px;
+            background-image: linear-gradient(rgba(255,247,248,0.60), rgba(248,251,255,0.60)),
+                              url("https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: white;
+            color: #777;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 85px;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .culinary-blue {
+            color: #103c7a;
+        }
+
+        .culinary-pink {
+            color: #f05a87;
+        }
+
+        .hero p {
+            font-size: 21px;
+            color: #4f4f4f;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255,255,255,0.55);
+            padding: 20px 28px;
+            border-radius: 22px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+        }
+
+        .section {
+            padding: 80px 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 19px;
+            max-width: 850px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        
+        .food-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 90px;
+        }
+
+        .food-card {
+            width: 350px;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .food-image {
+            height: 230px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .food-content {
+            padding: 28px;
+        }
+
+        .food-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #f05a87;
+        }
+
+        .food-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+    
+        .back-home {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            background: white;
+            color: #111;
+            padding: 18px 34px;
+            border-radius: 999px;
+            font-weight: 600;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <img src="logo.png" alt="EduSakura Logo">
+        </div>
+
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="culinary.html">Culinary</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <img src="logos.png" alt="School Logo">
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">EDUSAKURA • CULINARY PAGE</div>
+            <h1><span class="culinary-blue">Culinary</span> <span class="culinary-pink">Journey</span></h1>
+            <p>
+                One of the most exciting parts of my trip to Japan was experiencing its rich culinary culture — from iconic dishes to simple meals that made each day even more memorable.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Food I Experienced</h2>
+        <p class="section-subtitle">
+            Japanese food is known for its beautiful presentation, balance of flavors, and cultural meaning. Here are some of the dishes and food experiences that became part of my journey.
+        </p>
+
+        <div class="food-grid">
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://images.pexels.com/photos/17894268/pexels-photo-17894268.jpeg');"></div>
+                <div class="food-content">
+                    <h3>Sushi</h3>
+                    <p>
+                        Sushi was one of the most iconic foods I experienced in Japan. Its fresh ingredients, delicate taste, and artistic presentation made it both delicious and memorable.
+                    </p>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://images.pexels.com/photos/16266741/pexels-photo-16266741.jpeg');"></div>
+                <div class="food-content">
+                    <h3>Ramen</h3>
+                    <p>
+                        Ramen was one of the warmest and most comforting meals during the trip. The rich broth, noodles, and toppings created a flavorful experience that felt very authentic.
+                    </p>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://images.pexels.com/photos/6249394/pexels-photo-6249394.jpeg');"></div>
+                <div class="food-content">
+                    <h3>Bento</h3>
+                    <p>
+                        Bento meals showed me how Japanese food can be practical, organized, and still visually beautiful. Every part of the meal felt carefully prepared and balanced.
+                    </p>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://images.pexels.com/photos/30874703/pexels-photo-30874703.jpeg');"></div>
+                <div class="food-content">
+                    <h3>Onigiri</h3>
+                    <p>
+                        Onigiri is a traditional Japanese rice ball often filled with ingredients such as tuna, salmon, or seaweed. It is simple, tasty, and commonly enjoyed as a quick snack or light meal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://soranews24.com/wp-content/uploads/sites/3/2021/09/Japanese-onigiri-convenience-store-Spam-rice-ball-omusubi-best-selling-most-popular-review-photos-taste-test-food-news-1.jpg');"></div>
+                <div class="food-content">
+                    <h3>Convenience Store Food</h3>
+                    <p>
+                        Even simple meals from Japanese convenience stores were surprisingly tasty and high quality. It showed how even everyday food in Japan can feel special.
+                    </p>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image" style="background-image: url('https://images.pexels.com/photos/18405156/pexels-photo-18405156.jpeg');"></div>
+                <div class="food-content">
+                    <h3>Katsu</h3>
+                    <p>
+                        Katsu is a popular Japanese dish made of breaded and deep-fried meat, usually chicken or pork. It is known for its crispy texture, savory flavor, and satisfying taste.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="back-home">
+            <a href="index.html">← Back to Home</a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #000;
+    color: white;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: 600;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Background Jepang Cinematic */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://images.unsplash.com/photo-1505067216369-2ccba0a47b45?q=80&w=1920") center/cover no-repeat;
+    filter: brightness(0.6);
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ddd;
+}
+
+/* BUTTONS */
+.main-buttons {
+    margin-top: 80px;
+    display: flex;
+    gap: 40px;
+}
+
+.main-card {
+    text-decoration: none;
+    padding: 30px 60px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.5s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.main-card:hover {
+    transform: translateY(-12px) scale(1.08);
+    background: #E60012;
+    box-shadow: 0 30px 60px rgba(230,0,18,0.5);
+}
+
+/* FOOTER */
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* CUSTOM CURSOR */
+.custom-cursor {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    transition: transform 0.15s ease;
+}

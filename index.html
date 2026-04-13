@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSakura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --bg-2: #fff6fb;
+      --text: #101114;
+      --muted: #6d7380;
+      --blue: #123d87;
+      --blue-2: #2a66d9;
+      --pink: #f05a87;
+      --pink-2: #ff9dbc;
+      --card: rgba(255,255,255,0.72);
+      --stroke: rgba(255,255,255,0.55);
+      --shadow: 0 20px 50px rgba(20, 31, 60, 0.12);
+      --shadow-2: 0 18px 40px rgba(240, 90, 135, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(42,102,217,0.18), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(240,90,135,0.20), transparent 28%),
+        radial-gradient(circle at 75% 80%, rgba(255,157,188,0.16), transparent 25%),
+        linear-gradient(135deg, #f4f7ff 0%, #fff8fb 55%, #f7fbff 100%);
+      overflow-x: hidden;
+    }
+
+    
+    .blob, .blob2, .blob3 {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .35;
+      z-index: 0;
+      animation: drift 14s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .blob { width: 280px; height: 280px; background: rgba(42,102,217,.22); top: 70px; left: -40px; }
+    .blob2 { width: 340px; height: 340px; background: rgba(240,90,135,.20); top: 220px; right: -60px; animation-delay: 2s; }
+    .blob3 { width: 240px; height: 240px; background: rgba(255,157,188,.18); bottom: 30px; left: 28%; animation-delay: 4s; }
+    @keyframes drift {
+      0%,100% { transform: translateY(0) translateX(0) scale(1); }
+      50% { transform: translateY(-20px) translateX(12px) scale(1.06); }
+    }
+
+    /* Sakura petals */
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 30% 30%, #ffd6e3, #f5a7c0 70%, #ef86aa 100%);
+      border-radius: 65% 35% 70% 30% / 55% 45% 55% 45%;
+      opacity: .72;
+      animation: fall linear infinite;
+      box-shadow: 0 0 12px rgba(240,90,135,.18);
+    }
+    @keyframes fall {
+      0% { transform: translateY(-30px) rotate(0deg) translateX(0); }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(80px); }
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: calc(100% - 48px);
+      margin: 18px auto 0;
+      height: 86px;
+      padding: 0 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .nav-left, .nav-right { width: 170px; display: flex; align-items: center; }
+    .nav-right { justify-content: flex-end; }
+    .nav-left img, .nav-right img {
+      height: 64px; width: auto; object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.08));
+      transition: transform .35s ease;
+    }
+    .nav-left img:hover, .nav-right img:hover { transform: scale(1.06) rotate(-2deg); }
+    .nav-center ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      background: rgba(255,255,255,0.55);
+      padding: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.55);
+    }
+    .nav-center a {
+      position: relative;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: .28s ease;
+    }
+    .nav-center a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.8);
+      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 104px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 28px 90px;
+      z-index: 2;
+    }
+    .hero-content {
+      width: min(1200px, 100%);
+      position: relative;
+      animation: rise 1.2s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-panel {
+      position: absolute;
+      inset: 40px 0 auto 0;
+      height: 520px;
+      background:
+        linear-gradient(rgba(255,255,255,.40), rgba(255,255,255,.40)),
+        url('https://images.pexels.com/photos/9758797/pexels-photo-9758797.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center;
+      border-radius: 42px;
+      filter: saturate(1.05);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.6);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.24));
+      z-index: 0;
+    }
+
+    
+
+    .content-stack {
+      position: relative;
+      z-index: 3;
+      padding-top: 86px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+      color: #6d7380;
+      font-weight: 600;
+      margin-bottom: 26px;
+    }
+    .badge-dot {
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--blue-2));
+      box-shadow: 0 0 14px rgba(240,90,135,.35);
+    }
+
+    h1 {
+      font-size: clamp(3.8rem, 9vw, 7.6rem);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 0 8px 30px rgba(255,255,255,.18);
+    }
+    .edu {
+      background: linear-gradient(180deg, #2b6ee8 0%, #123d87 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 10px 20px rgba(18,61,135,.12));
+    }
+    .sakura {
+      background: linear-gradient(180deg, #ff8eb2 0%, #f05a87 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 10px 20px rgba(240,90,135,.14));
+    }
+
+    .sub {
+      width: min(920px, 92%);
+      margin: 0 auto 38px;
+      font-size: clamp(1.04rem, 2vw, 1.28rem);
+      line-height: 1.9;
+      color: #3f4754;
+      padding: 22px 28px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,.55);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .main-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(180px, 1fr));
+      gap: 18px;
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+    .main-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 190px;
+      border-radius: 32px;
+      text-decoration: none;
+      color: var(--text);
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+    }
+    .main-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 26px 50px rgba(17, 24, 39, 0.16);
+      border-color: rgba(255,255,255,.82);
+    }
+    .main-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity .4s ease, transform .55s ease;
+      transform: scale(1.06);
+      z-index: -2;
+    }
+    .main-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.76));
+      opacity: 0;
+      transition: opacity .35s ease;
+      z-index: -1;
+    }
+    .main-card:hover::before,
+    .main-card:hover::after { opacity: 1; }
+    .main-card:hover::before { transform: scale(1.12); }
+
+    .activity::before { background-image: url('https://images.pexels.com/photos/547115/pexels-photo-547115.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+    .destination::before { background-image: url('https://images.pexels.com/photos/28954743/pexels-photo-28954743.jpeg'); }
+    .culinary::before { background-image: url('https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+    .form::before { background-image: url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+
+    .card-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .mini-chip {
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      background: rgba(255,255,255,.82);
+      color: #4a5565;
+      box-shadow: 0 10px 18px rgba(0,0,0,.06);
+    }
+    .card-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .card-sub {
+      color: #5f6673;
+      line-height: 1.7;
+      font-size: .98rem;
+      max-width: 95%;
+    }
+
+    .floating-stats {
+      position: absolute;
+      right: 24px;
+      top: 22px;
+      display: flex;
+      gap: 12px;
+      z-index: 4;
+    }
+    .stat {
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+      padding: 14px 16px;
+      border-radius: 18px;
+      text-align: left;
+      min-width: 120px;
+    }
+    .stat-num {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stat-label {
+      font-size: .84rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .scroll-hint {
+      margin-top: 22px;
+      color: #6f7682;
+      font-weight: 600;
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .main-buttons { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .nav-center ul { flex-wrap: wrap; justify-content: center; }
+  </style>
+</head>
+<body id="top">
+  <div class="blob"></div>
+  <div class="blob2"></div>
+  <div class="blob3"></div>
+
+  <div class="petals" id="petals"></div>
+
+  <nav>
+    <div class="nav-left">
+      <img src="logo.png" alt="EduSakura Logo" />
+    </div>
+
+    <div class="nav-center">
+  <ul>
+    <li><a href="#top">Home</a></li>
+    <li><a href="#explore">Explore</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</div>
+
+    <div class="nav-right">
+      <img src="logos.png" alt="School Logo" />
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-panel">
+        <div class="shine"></div>
+      </div>
+
+      <div class="floating-stats">
+        <div class="stat">
+          <div class="stat-num">2026</div>
+          <div class="stat-label">School Year</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Japan</div>
+          <div class="stat-label">Destination</div>
+        </div>
+      </div>
+
+      <div class="content-stack">
+        <div class="badge"><span class="badge-dot"></span> SANTA LAURENSIA EDUTRIP 2026</div>
+        <h1><span class="edu">Edu</span><span class="sakura">Sakura</span></h1>
+        <p class="sub" id="about">
+          A cinematic landing page for my unforgettable educational journey in Japan — blending culture,
+          learning, discovery, food, and the memories I made as a student exploring a new world.
+        </p>
+
+        <div class="main-buttons" id="explore">
+          <a href="activity.html" class="main-card activity">
+            <div class="card-inner">
+              <div class="mini-chip">Day by Day</div>
+              <div class="card-title">Activity</div>
+              <div class="card-sub">See the experiences, schedules, and moments that shaped the trip.</div>
+            </div>
+          </a>
+
+          <a href="destination.html" class="main-card destination">
+            <div class="card-inner">
+              <div class="mini-chip">Places</div>
+              <div class="card-title">Destination</div>
+              <div class="card-sub">Explore the cities, landmarks, and beautiful places I visited.</div>
+            </div>
+          </a>
+
+          <a href="culinary.html" class="main-card culinary">
+            <div class="card-inner">
+              <div class="mini-chip">Taste</div>
+              <div class="card-title">Culinary</div>
+              <div class="card-sub">Discover the Japanese food and flavors I experienced along the way.</div>
+            </div>
+          </a>
+
+          <a href="form.html" class="main-card form">
+            <div class="card-inner">
+              <div class="mini-chip">Feedback</div>
+              <div class="card-title">Form</div>
+              <div class="card-sub">Leave thoughts, feedback, or messages about the website experience.</div>
+            </div>
+          </a>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+    <script>
+      
+      const petals = document.getElementById('petals');
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('span');
+        p.className = 'petal';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDuration = (Math.random() * 3 + 8) + 's';
+        p.style.animationDelay = Math.random() * 2 + 's';
+        petals.appendChild(p);
+      }
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - EduSakura</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      text-align: center;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.7)),
+        url("https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* 🔥 NAVBAR */
+    nav {
+      width: 100%;
+      height: 95px;
+      padding: 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f1f2f4;
+    }
+
+    .nav-left,
+    .nav-right {
+      width: 190px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left { justify-content: flex-start; }
+    .nav-right { justify-content: flex-end; }
+
+    .nav-left img,
+    .nav-right img {
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .nav-center ul {
+      list-style: none;
+      display: flex;
+      gap: 60px;
+    }
+
+    .nav-center ul li a {
+      text-decoration: none;
+      color: #6b6b6b;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    /* 🌸 TITLE */
+    h1 {
+      margin-top: 80px;
+      font-size: 56px;
+      font-weight: 800;
+      color: rgb(2, 2, 2);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    /* 🌸 TEAM */
+    .team {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+
+    /* ✨ GLASS CARD */
+    .card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 30px;
+      width: 260px;
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.3s; }
+    .card:nth-child(2) { animation-delay: 0.6s; }
+    .card:nth-child(3) { animation-delay: 0.9s; }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .role {
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* 🔙 BACK BUTTON */
+    .back-home {
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+
+    .back-home a {
+      text-decoration: none;
+      background: white;
+      color: #111;
+      padding: 18px 34px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      display: inline-block;
+    }
+
+    /* 🌸 ANIMATION */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🌸 SAKURA */
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      top: -40px;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 30% 30%, #ffd6e3, #f5a7c0);
+      border-radius: 60% 40% 60% 40%;
+      opacity: 0.7;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-30px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🌸 Sakura -->
+  <div class="petals" id="petals"></div>
+
+  <!-- 🔥 NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="nav-center">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#explore">Explore</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-right">
+      <img src="logos.png" alt="Logo">
+    </div>
+  </nav>
+
+  <!-- TITLE -->
+  <h1>Meet The Team</h1>
+
+  <!-- TEAM -->
+  <div class="team">
+
+    <div class="card">
+      <img src="miko.jpeg">
+      <div class="name">Mikael Oliver Soethiono</div>
+      <div class="role">Designer</div>
+      <div class="desc">Responsible for UI/UX design.</div>
+    </div>
+
+    <div class="card">
+      <img src="gg.jpeg">
+      <div class="name">Calvin Dovanique Atmaja</div>
+      <div class="role">Developer</div>
+      <div class="desc">Handles coding.</div>
+    </div>
+
+    <div class="card">
+      <img src="hitem.jpeg">
+      <div class="name">Dwayne Ethan Manupassa</div>
+      <div class="role">Content</div>
+      <div class="desc">Creates content and structure.</div>
+    </div>
+
+  </div>
+
+  <!-- BACK BUTTON -->
+  <div class="back-home">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <!-- 🌸 Sakura Script -->
+  <script>
+    const petals = document.getElementById('petals');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('span');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (Math.random() * 3 + 8) + 's';
+      p.style.animationDelay = Math.random() * 2 + 's';
+      petals.appendChild(p);
+    }
+  </script>
+
+</body>
+</html>

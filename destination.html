@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #f7faff, #fff8fb);
+            color: #111;
+        }
+
+        
+        nav {
+            width: 100%;
+            height: 95px;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-bottom: 1px solid #dcdcdc;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-left,
+        .nav-right {
+            width: 190px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            justify-content: flex-start;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-left img,
+        .nav-right img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 45px;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            color: #6b6b6b;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-center ul li a:hover {
+            color: black;
+        }
+
+        .hero {
+            min-height: 55vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 30px;
+            background-image: linear-gradient(rgba(247,250,255,0.60), rgba(255,248,251,0.60)),
+                              url("https://images.pexels.com/photos/31407147/pexels-photo-31407147.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: white;
+            color: #777;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 85px;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .destination-blue {
+            color: #103c7a;
+        }
+
+        .destination-pink {
+            color: #f05a87;
+        }
+
+        .hero p {
+            font-size: 21px;
+            color: #4f4f4f;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255,255,255,0.55);
+            padding: 20px 28px;
+            border-radius: 22px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+        }
+
+        
+        .section {
+            padding: 80px 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 50px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 19px;
+            max-width: 850px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        
+       .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 90px;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+        .destination-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .destination-content {
+            padding: 28px;
+        }
+
+        .destination-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #103c7a;
+        }
+
+        .destination-content p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        
+        .highlight-box {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            background: white;
+            border-radius: 32px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .highlight-photo {
+            width: 420px;
+            height: 280px;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-text h3 {
+            font-size: 38px;
+            margin-bottom: 18px;
+            color: #f05a87;
+        }
+
+        .highlight-text p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #555;
+        }
+
+       
+        .back-home {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            background: white;
+            color: #111;
+            padding: 18px 34px;
+            border-radius: 999px;
+            font-weight: 600;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-left">
+            <img src="logo.png" alt="EduSakura Logo">
+        </div>
+
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destination</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <img src="logos.png" alt="School Logo">
+        </div>
+    </nav>
+
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">EDUSAKURA • DESTINATION PAGE</div>
+            <h1><span class="destination-blue">My</span> <span class="destination-pink">Destinations</span></h1>
+            <p>
+                This page showcases the beautiful destinations I visited during my educational journey in Japan — places that inspired me through their culture, atmosphere, and unforgettable scenery.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Places I Visited</h2>
+        <p class="section-subtitle">
+            Every destination in Japan had its own atmosphere and meaning. From modern cityscapes to traditional cultural spaces, each place gave me a different perspective and experience.
+        </p>
+
+        <div class="destination-grid">
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://images.pexels.com/photos/35511836/pexels-photo-35511836.jpeg');"></div>
+                <div class="destination-content">
+                    <h3>Kumamoto Castle</h3>
+                    <p>
+                        Kumamoto Castle is a historic site that showcases the architectural and military heritage of Japan. Its well-preserved structure and surrounding gardens provide a glimpse into the country's feudal past.
+                    </p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://images.pexels.com/photos/7115326/pexels-photo-7115326.jpeg');"></div>
+                <div class="destination-content">
+                    <h3>Fukuoka</h3>
+                    <p>
+                        Fukuoka is a vibrant city in southern Japan that is known for its friendly atmosphere, delicious food, and beautiful urban scenery. It offers a perfect mix of modern city life and local cultural charm.
+                    </p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://img.atlasobscura.com/WX0eH-lmpMzS9xiYmFznKX0AEVEZe84NZ1trHcZP9Ns/rt:fit/h:400/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy85ZjRh/NWE4ZS1iNGU4LTRm/ZDEtODExMy0yMGVl/YTU1NTM1YTk3YzE3/YmVlNWQ5MTg1YzQy/NjJfR2V0dHlJbWFn/ZXMtMTIxMjA2OTc0/MS5qcGc.webp');"></div>
+                <div class="destination-content">
+                    <h3>Odaiba</h3>
+                    <p>
+                        Odaiba is a modern entertainment district in Tokyo known for its futuristic atmosphere, waterfront views, and exciting attractions. It is also famous for its replica of the Statue of Liberty, which adds a unique international touch to the area.
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://images.pexels.com/photos/29266022/pexels-photo-29266022.jpeg');"></div>
+                <div class="destination-content">
+                    <h3>Asakusa</h3>
+                    <p>
+                        Asakusa gave me the opportunity to experience traditional Japanese culture more closely, especially through its temples, old streets, and unique local atmosphere.
+                    </p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://images.pexels.com/photos/17210770/pexels-photo-17210770.jpeg');"></div>
+                <div class="destination-content">
+                    <h3>Shibuya</h3>
+                    <p>
+                        Shibuya represented the fast-paced and modern side of Japan. Its crowded streets, bright lights, and energetic environment made it an unforgettable urban experience.
+                    </p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <div class="destination-image" style="background-image: url('https://www.gotokyo.org/en/destinations/western-tokyo/harajuku/images/area031_1008_30.webp');"></div>
+                <div class="destination-content">
+                    <h3>Harajuku</h3>
+                    <p>
+                        Harajuku is a popular district in Tokyo known for its unique fashion, creative culture, and exciting shopping streets. It is a great place to see the energetic and modern lifestyle of Japan.    
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="back-home">
+            <a href="index.html">← Back to Home</a>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #fef6fa, #f7f9fc);
+            color: #111;
+        }
+
+        nav {
+            width: 100%;
+            height: 95px;
+            padding: 0 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            border-bottom: 1px solid #dcdcdc;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .nav-left,
+        .nav-right {
+            width: 190px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left {
+            justify-content: flex-start;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+        }
+
+        .nav-left img,
+        .nav-right img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 45px;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            color: #6b6b6b;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .nav-center ul li a:hover {
+            color: black;
+        }
+
+       
+        .hero {
+            min-height: 45vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 30px;
+            background-image: linear-gradient(rgba(255,245,250,0.60), rgba(245,248,255,0.60)),
+                              url("https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: white;
+            color: #777;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .form-blue {
+            color: #103c7a;
+        }
+
+        .form-pink {
+            color: #f05a87;
+        }
+
+        .hero p {
+            font-size: 21px;
+            color: #4f4f4f;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255,255,255,0.55);
+            padding: 20px 28px;
+            border-radius: 22px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.05);
+        }
+
+       
+        .form-section {
+            padding: 80px 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 32px;
+            padding: 45px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-card h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #103c7a;
+        }
+
+        .form-card p {
+            text-align: center;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 17px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1px solid #ddd;
+            border-radius: 18px;
+            font-size: 16px;
+            outline: none;
+            background: #fafafa;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 18px;
+            background: lightblue;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        
+        .back-home {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            background: white;
+            color: #111;
+            padding: 18px 34px;
+            border-radius: 999px;
+            font-weight: 600;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-left">
+            <img src="logo.png" alt="EduSakura Logo">
+        </div>
+
+        <div class="nav-center">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="form.html">Form</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <img src="logos.png" alt="School Logo">
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">EDUSAKURA • FEEDBACK PAGE</div>
+            <h1><span class="form-blue">Share</span> <span class="form-pink">Your Thoughts</span></h1>
+            <p>
+                Thank you for visiting my EduTrip website. I would love to hear your thoughts, feedback, or impressions about this journey and the experiences shared here.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="form-section">
+        <div class="form-card">
+            <h2>Leave a Message</h2>
+            <p>
+                Please fill in this form to share your feedback, favorite page, or your overall thoughts about my EduTrip experience.
+            </p>
+
+            <form action="https://formspree.io/f/mjgjbzol" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="favorite">Favorite Page</label>
+                    <select id="favorite" name="favorite" required>
+                        <option value="">Choose one</option>
+                        <option>Activity</option>
+                        <option>Destination</option>
+                        <option>Culinary</option>
+                        <option>Home</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Write your thoughts here..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            <div class="back-home">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
